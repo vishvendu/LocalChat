@@ -19,7 +19,7 @@ public class ChatApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "contacts-db");
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "local_chat");
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }

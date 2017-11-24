@@ -27,16 +27,17 @@ public class MainActivity extends AppCompatActivity implements IDaoViewInsert {
     private Button sendButton;
     private EditText editText;
     private String chatdataString;
-    private ArrayList<String> userOneList,DaoUserOneList;
-    private ArrayList<Integer> userTwoList,DaoUserTwoList;
-    private ChatListAdapter chatListAdapter;
+    private ArrayList<String> DaoUserOneList;
+    private ArrayList<Integer> DaoUserTwoList;
     private Random random;
     private String mRandomData;
     private User user1, user2;
     private long userOne, userTwo;
     private List<Chats> chatList;
-    private Chats chatsforUsers, chatsforRandomUser;
+    private Chats chatsforUsers;
     private IDaoViewInsert iDaoViewInsert;
+    private String TableName;
+    private List<Chats> chat;
 
 
     @Override
@@ -52,8 +53,7 @@ public class MainActivity extends AppCompatActivity implements IDaoViewInsert {
 
     private void initApp() {
 
-        userOneList = new ArrayList<>();
-        userTwoList = new ArrayList<>();
+
         DaoUserOneList = new ArrayList<>();
         DaoUserTwoList = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.chat_recyclerview);
@@ -108,13 +108,13 @@ public class MainActivity extends AppCompatActivity implements IDaoViewInsert {
     public boolean showDataDao() {
 
 
-        String TableName = getAppDaoSession().getUserDao().getTablename();
+        TableName = getAppDaoSession().getUserDao().getTablename();
 
         if(TableName.equals("USER")){
 
 
-            List<Chats> chat = ((ChatApplication)getApplication()).getDaoSession().getChatsDao().loadAll();
-            List<User> users = ((ChatApplication)getApplication()).getDaoSession().getUserDao().loadAll();
+            chat = ((ChatApplication)getApplication()).getDaoSession().getChatsDao().loadAll();
+
             for (Chats a :chat){
 
                 DaoUserOneList.add(a.getChatDataUserOne());

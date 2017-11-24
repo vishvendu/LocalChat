@@ -28,7 +28,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.MyView
 
         chatData = new ArrayList<>();
         randomdata = new ArrayList<>();
-         chatHistory = new User();
+        chatHistory = new User();
         this.chatData = chatString;
         this.randomdata =  randomintegers;
         this.mContext = application;
